@@ -4,7 +4,7 @@
  <title>DaidoujiChen 記事本</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-11-27T17:35:16+08:00</updated>
+ <updated>2014-11-27T21:16:53+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>DaidoujiChen</name>
@@ -13,10 +13,64 @@
 
  
  <entry>
-   <title>NSMutableArray 的 new 和 array</title>
-   <link href="http://username.github.io/2014/11/27/new-post"/>
+   <title>安裝 Jekyll 遇到的問題</title>
+   <link href="http://username.github.io/jekyll/2014/11/27/4"/>
    <updated>2014-11-27T00:00:00+08:00</updated>
-   <id>http://username.github.io/2014/11/27/new-post</id>
+   <id>http://username.github.io/jekyll/2014/11/27/4</id>
+   <content type="html">
+&lt;p&gt;家裡的 mac 安裝 &lt;code&gt;Jekyll&lt;/code&gt; 的時候遇到&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; ERROR: Error installing jekyll: 
+ ERROR: Failed to build gem native extension.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;這樣的錯誤訊息, 從網站&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://davidensinger.com/2013/03/installing-jekyll/&quot;&gt;http://davidensinger.com/2013/03/installing-jekyll/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;照著做就可以解決.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>陣營</title>
+   <link href="http://username.github.io/%E8%88%88%E8%B6%A3/2014/11/27/3"/>
+   <updated>2014-11-27T00:00:00+08:00</updated>
+   <id>http://username.github.io/%E8%88%88%E8%B6%A3/2014/11/27/3</id>
+   <content type="html">
+&lt;p&gt;以前玩博德之門的時候有選過, 但是已經忘光光了, 想到就突然查一下&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E9%98%B5%E8%90%A5_%28%E9%BE%99%E4%B8%8E%E5%9C%B0%E4%B8%8B%E5%9F%8E%29&quot;&gt;龍與地下城陣營&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;善良與邪惡&lt;/h2&gt;
+&lt;p&gt;根據生物是否樂於幫助他人，是否為了一己私利而傷害他人，可以將其劃分為善良陣營、中立陣營和邪惡陣營。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 善良的生物尊重生命，樂與幫助他人，有時候甚至願意犧牲自己去拯救他人。
+
+ 邪惡的生物往往沒有同情心，為了自己的利益不惜傷害、殺死他人，也常常奴役強迫他人為自己服務。
+
+ 中立的生物則介於兩者之間，他們往往不會主動傷害無辜，但也不會為了他人而犧牲自己。有些中立陣營的生物會主動幫助自己的朋友，但對陌生人的求救置若罔聞。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;守序與混亂&lt;/h2&gt;
+&lt;p&gt;根據生物是否誠實，是否遵守法律法規，可以將其劃分為守序陣營、中立陣營和混亂陣營。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 守序的生物嚴守誓言，遵紀守法，重視傳統，服從權威。
+
+ 混亂的生物不喜歡被約束，崇尚個體自由，對誓言不太看重。
+
+ 中立的生物也介於兩者之間，往往不會主動破壞法律，但也不會積極的維護它，不會主動打破約定的習俗，有時也會為了某種目的而說謊。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;嗯嗯, 按照這個分類, 我果然跟 &lt;code&gt;吟遊詩人&lt;/code&gt; tone 調很合. O3O&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>NSMutableArray 的 new 和 array</title>
+   <link href="http://username.github.io/objective-c/2014/11/27/2"/>
+   <updated>2014-11-27T00:00:00+08:00</updated>
+   <id>http://username.github.io/objective-c/2014/11/27/2</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/21710301/initialization-of-an-nsmutablearray-with-array-or-alloc-init&quot;&gt;stackoverflow link&lt;/a&gt;&lt;/p&gt;
 
@@ -38,9 +92,9 @@
  
  <entry>
    <title>Hello World</title>
-   <link href="http://username.github.io/2014/11/27/hello-world"/>
+   <link href="http://username.github.io/%E5%85%B6%E4%BB%96/2014/11/27/1"/>
    <updated>2014-11-27T00:00:00+08:00</updated>
-   <id>http://username.github.io/2014/11/27/hello-world</id>
+   <id>http://username.github.io/%E5%85%B6%E4%BB%96/2014/11/27/1</id>
    <content type="html">
 &lt;p&gt;不知道厲不厲害, 試用看看. O3O&lt;/p&gt;
 </content>
