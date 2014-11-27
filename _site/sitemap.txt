@@ -9,4 +9,5 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
+http://username.github.io/2014/11/27/new-post
 http://username.github.io/2014/11/27/hello-world

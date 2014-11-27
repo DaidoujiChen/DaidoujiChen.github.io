@@ -5,10 +5,34 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-11-27T11:43:51+08:00</lastBuildDate>
-        <pubDate>2014-11-27T11:43:51+08:00</pubDate>
+        <lastBuildDate>2014-11-27T14:47:26+08:00</lastBuildDate>
+        <pubDate>2014-11-27T14:47:26+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>NSMutableArray 的 new 和 array</title>
+                <description>
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/21710301/initialization-of-an-nsmutablearray-with-array-or-alloc-init&quot;&gt;stackoverflow link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;雖然在 ARC 下, 寫&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; [NSMutableArray new];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;和&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; [NSMutableArray array];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;已經沒有差異了, 但是從 &lt;code&gt;MRC&lt;/code&gt; 走過來的習慣, 始終有種寫 &lt;code&gt;new&lt;/code&gt; 就要多寫 &lt;code&gt;release&lt;/code&gt; 的錯覺…&lt;/p&gt;
+
+&lt;p&gt;因此都還是習慣寫 &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+</description>
+                <link>http://username.github.io/2014/11/27/new-post</link>
+                <guid>http://username.github.io/2014/11/27/new-post</guid>
+                <pubDate>2014-11-27T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Hello World</title>

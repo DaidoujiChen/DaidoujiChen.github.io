@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Hello World</title>
+    <title>NSMutableArray 的 new 和 array</title>
     <meta name="description" content="">
     <meta name="author" content="DaidoujiChen">
 
@@ -134,7 +134,7 @@
       <div class="container">
         
 <div class="page-header">
-  <h1>Hello World </h1>
+  <h1>NSMutableArray 的 new 和 array </h1>
 </div>
 
 <div class="row post-full">
@@ -144,7 +144,21 @@
     </div>
     <div class="content">
       
-<p>不知道厲不厲害, 試用看看. O3O</p>
+<p><a href="http://stackoverflow.com/questions/21710301/initialization-of-an-nsmutablearray-with-array-or-alloc-init">stackoverflow link</a></p>
+
+<p>雖然在 ARC 下, 寫</p>
+
+<pre><code> [NSMutableArray new];
+</code></pre>
+
+<p>和</p>
+
+<pre><code> [NSMutableArray array];
+</code></pre>
+
+<p>已經沒有差異了, 但是從 <code>MRC</code> 走過來的習慣, 始終有種寫 <code>new</code> 就要多寫 <code>release</code> 的錯覺…</p>
+
+<p>因此都還是習慣寫 <code>array</code>.</p>
 
     </div>
 
@@ -159,7 +173,7 @@
 
   
      
-    	<li><a href="/tags.html#Hello World-ref">Hello World <span>1</span></a></li>
+    	<li><a href="/tags.html#NSMutableArray-ref">NSMutableArray <span>1</span></a></li>
     
   
 
@@ -171,11 +185,11 @@
     <hr>
     <ul class="pagination">
     
-      <li class="prev disabled"><a>&larr; Previous</a></li>
+      <li class="prev"><a href="/2014/11/27/hello-world" title="Hello World">&laquo; Previous</a></li>
     
       <li><a href="/archive.html">Archive</a></li>
     
-      <li class="next"><a href="/2014/11/27/new-post" title="NSMutableArray 的 new 和 array">Next &raquo;</a></li>
+      <li class="next disabled"><a>Next &rarr;</a>
     
     </ul>
     <hr>
