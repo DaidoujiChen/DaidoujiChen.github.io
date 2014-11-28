@@ -4,13 +4,39 @@
  <title>DaidoujiChen 記事本</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-11-27T21:16:53+08:00</updated>
+ <updated>2014-11-28T15:02:58+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>DaidoujiChen</name>
    <email>daidoujichen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>如何編寫無法維護的代碼</title>
+   <link href="http://username.github.io/objective-c/2014/11/28/1"/>
+   <updated>2014-11-28T00:00:00+08:00</updated>
+   <id>http://username.github.io/objective-c/2014/11/28/1</id>
+   <content type="html">
+&lt;p&gt;從 g+ &lt;a href=&quot;https://plus.google.com/u/0/+YoluaMesiade/posts&quot;&gt;Yolua Mesiade&lt;/a&gt; 的 po 看到, 這篇文還蠻有趣的 &lt;a href=&quot;http://blog.jobbole.com/80241/&quot;&gt;如何编写无法维护的代码&lt;/a&gt;, O3O&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; 单字母变量名
+ 如果你给变量起名为a,b,c，用简单的文本编辑器就没法搜索它们的引用。而且，没人能猜到它们的含义。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我們正好接了一份 code, 其中資料夾的部分也是用 A, B, C …等等, 來命名,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/螢幕快照 2014-11-28 上午9.39.06.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;當然, O3O 我們不會懂這些 A, B, C 是根據什麼命名的, 也不會懂為什麼不連續, 有時候跳有時候不跳,&lt;/p&gt;
+
+&lt;p&gt;以某一個資料夾來說, 裡面還會有 G1, G2, G3&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/螢幕快照 2014-11-28 下午2.55.54.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;一直到現在我們都還不懂其中的邏輯是什麼~ O3O&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>安裝 Jekyll 遇到的問題</title>
