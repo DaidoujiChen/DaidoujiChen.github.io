@@ -4,13 +4,103 @@
  <title>DaidoujiChen 記事本</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-11-28T15:02:58+08:00</updated>
+ <updated>2014-11-28T17:27:35+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>DaidoujiChen</name>
    <email>daidoujichen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>beacon 小記</title>
+   <link href="http://username.github.io/objective-c/2014/11/28/2"/>
+   <updated>2014-11-28T00:00:00+08:00</updated>
+   <id>http://username.github.io/objective-c/2014/11/28/2</id>
+   <content type="html">
+&lt;h2 id=&quot;beacon&quot;&gt;beacon&lt;/h2&gt;
+&lt;p&gt;玩了一下 beacon, 大致的記錄一下其中的流程, 首先, 要先建立 &lt;code&gt;CLLocationManager&lt;/code&gt;, 並且把 &lt;code&gt;delegate&lt;/code&gt; 掛上&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; CLLocationManager *locationManager = [CLLocationManager new];
+ locationManager.delegate = self;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然後, 建立一個 &lt;code&gt;CLBeaconRegion&lt;/code&gt;, 宣告 beacon 的內容, 像是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:yourBeaconUUID];
+ CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:yourIdentifier];
+ beaconRegion.notifyEntryStateOnDisplay = YES;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;beacon 分為兩塊功能,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;monitor&lt;/li&gt;
+  &lt;li&gt;range&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;monitor&quot;&gt;monitor&lt;/h2&gt;
+&lt;p&gt;monitor 負責讓 app 知道是不是進到 beacon 的範圍內, 以及一些狀態的變動, 需要在 plist 中添加 &lt;code&gt;NSLocationAlwaysUsageDescription&lt;/code&gt; 要求權限, 才可以正常 work, 開啟的方法是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[locationManager startMonitoringForRegion:beaconRegion];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;主要會進&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//beacon monitor 開啟時, 進入 beacon 範圍會進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region;
+
+//beacon monitor 開啟時, 離開 beacon 範圍會進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region;
+
+//beacon monitor 開啟時, beacon 狀態的變動會進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;關閉則是反過來&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[locationManager stopMonitoringForRegion:beaconRegion];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;需要注意的是, monitor 拿不到 beacon 的 major 和 minor , 遠近, RSSI 等各種資訊.&lt;/p&gt;
+
+&lt;h2 id=&quot;range&quot;&gt;range&lt;/h2&gt;
+&lt;p&gt;range 負責讓 app 知道 beacon 的距離, 訊號強弱, 帶的 id, 需要在 plist 中添加 &lt;code&gt;NSLocationWhenInUseUsageDescription&lt;/code&gt; 要求權限, 才可以正常 work, 開啟的方法是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[locationManager startRangingBeaconsInRegion:beaconRegion];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;主要會進&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//beacon range 開啟時, 會有 beacons 掉進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;關閉則是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[locationManager stopRangingBeaconsInRegion:beaconRegion];
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;從 &lt;code&gt;beacons&lt;/code&gt; 這個 array 當中, 就可以拿到目前周圍的 beacon 們.&lt;/p&gt;
+
+&lt;p&gt;range 會每秒每秒的掃 beacon, 其實感覺會蠻耗電的.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;合體&lt;/h2&gt;
+&lt;p&gt;目前我們讓這兩個方法合體的邏輯是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;開啟 monitor -&amp;gt; 看到 beacon 則開啟 range -&amp;gt; 範圍內沒有 beacon -&amp;gt; 關閉 range
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;這樣的流程.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;參考&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html&quot;&gt;Region Monitoring and iBeacon&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/ibeacon/Getting-Started-with-iBeacon.pdf&quot;&gt;Getting Started with iBeacon&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/nicktoumpelis/HiBeacons&quot;&gt;HiBeacons&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>如何編寫無法維護的代碼</title>

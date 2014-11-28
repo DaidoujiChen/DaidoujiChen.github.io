@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        如何編寫無法維護的代碼 - 
+        beacon 小記 - 
       
       DaidoujiChen 記事本
     </title>
@@ -132,7 +132,7 @@
           
 <div class="page-header">
   <h1>
-    如何編寫無法維護的代碼 
+    beacon 小記 
     
   </h1>
 </div>
@@ -140,32 +140,96 @@
 <div class="row">
   <div class="span8">
     
-<p>從 g+ <a href="https://plus.google.com/u/0/+YoluaMesiade/posts">Yolua Mesiade</a> 的 po 看到, 這篇文還蠻有趣的 <a href="http://blog.jobbole.com/80241/">如何编写无法维护的代码</a>, O3O</p>
+<h2 id="beacon">beacon</h2>
+<p>玩了一下 beacon, 大致的記錄一下其中的流程, 首先, 要先建立 <code>CLLocationManager</code>, 並且把 <code>delegate</code> 掛上</p>
 
-<pre><code> 单字母变量名
- 如果你给变量起名为a,b,c，用简单的文本编辑器就没法搜索它们的引用。而且，没人能猜到它们的含义。
+<pre><code> CLLocationManager *locationManager = [CLLocationManager new];
+ locationManager.delegate = self;
 </code></pre>
 
-<p>我們正好接了一份 code, 其中資料夾的部分也是用 A, B, C …等等, 來命名,</p>
+<p>然後, 建立一個 <code>CLBeaconRegion</code>, 宣告 beacon 的內容, 像是</p>
 
-<p><img src="/images/螢幕快照 2014-11-28 上午9.39.06.png" alt="image" /></p>
+<pre><code> NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:yourBeaconUUID];
+ CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID identifier:yourIdentifier];
+ beaconRegion.notifyEntryStateOnDisplay = YES;
+</code></pre>
 
-<p>當然, O3O 我們不會懂這些 A, B, C 是根據什麼命名的, 也不會懂為什麼不連續, 有時候跳有時候不跳,</p>
+<p>beacon 分為兩塊功能,</p>
 
-<p>以某一個資料夾來說, 裡面還會有 G1, G2, G3</p>
+<ul>
+  <li>monitor</li>
+  <li>range</li>
+</ul>
 
-<p><img src="/images/螢幕快照 2014-11-28 下午2.55.54.png" alt="image" /></p>
+<h2 id="monitor">monitor</h2>
+<p>monitor 負責讓 app 知道是不是進到 beacon 的範圍內, 以及一些狀態的變動, 需要在 plist 中添加 <code>NSLocationAlwaysUsageDescription</code> 要求權限, 才可以正常 work, 開啟的方法是</p>
 
-<p>一直到現在我們都還不懂其中的邏輯是什麼~ O3O</p>
+<pre><code>[locationManager startMonitoringForRegion:beaconRegion];
+</code></pre>
+
+<p>主要會進</p>
+
+<pre><code>//beacon monitor 開啟時, 進入 beacon 範圍會進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region;
+
+//beacon monitor 開啟時, 離開 beacon 範圍會進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region;
+
+//beacon monitor 開啟時, beacon 狀態的變動會進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region;
+</code></pre>
+
+<p>關閉則是反過來</p>
+
+<pre><code>[locationManager stopMonitoringForRegion:beaconRegion];
+</code></pre>
+
+<p>需要注意的是, monitor 拿不到 beacon 的 major 和 minor , 遠近, RSSI 等各種資訊.</p>
+
+<h2 id="range">range</h2>
+<p>range 負責讓 app 知道 beacon 的距離, 訊號強弱, 帶的 id, 需要在 plist 中添加 <code>NSLocationWhenInUseUsageDescription</code> 要求權限, 才可以正常 work, 開啟的方法是</p>
+
+<pre><code>[locationManager startRangingBeaconsInRegion:beaconRegion];
+</code></pre>
+
+<p>主要會進</p>
+
+<pre><code>//beacon range 開啟時, 會有 beacons 掉進這個 delegate
+- (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
+</code></pre>
+
+<p>關閉則是</p>
+
+<pre><code>[locationManager stopRangingBeaconsInRegion:beaconRegion];
+</code></pre>
+
+<p>從 <code>beacons</code> 這個 array 當中, 就可以拿到目前周圍的 beacon 們.</p>
+
+<p>range 會每秒每秒的掃 beacon, 其實感覺會蠻耗電的.</p>
+
+<h2 id="section">合體</h2>
+<p>目前我們讓這兩個方法合體的邏輯是</p>
+
+<pre><code>開啟 monitor -&gt; 看到 beacon 則開啟 range -&gt; 範圍內沒有 beacon -&gt; 關閉 range
+</code></pre>
+
+<p>這樣的流程.</p>
+
+<h2 id="section-1">參考</h2>
+<p><a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/RegionMonitoring/RegionMonitoring.html">Region Monitoring and iBeacon</a></p>
+
+<p><a href="https://developer.apple.com/ibeacon/Getting-Started-with-iBeacon.pdf">Getting Started with iBeacon</a></p>
+
+<p><a href="https://github.com/nicktoumpelis/HiBeacons">HiBeacons</a></p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/jekyll/2014/11/27/4" title="安裝 Jekyll 遇到的問題">&larr; Previous</a>
+        <a class="btn prev" href="/objective-c/2014/11/28/1" title="如何編寫無法維護的代碼">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/objective-c/2014/11/28/2" title="beacon 小記">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -216,6 +280,8 @@
   
      
     	<li><a href="/tags.html#Objective-C-ref">Objective-C <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#iBeacon-ref">iBeacon <span>1</span></a></li>
     
   
 
