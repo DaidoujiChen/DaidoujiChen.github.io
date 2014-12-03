@@ -5,10 +5,32 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-11-28T17:27:35+08:00</lastBuildDate>
-        <pubDate>2014-11-28T17:27:35+08:00</pubDate>
+        <lastBuildDate>2014-12-03T11:20:36+08:00</lastBuildDate>
+        <pubDate>2014-12-03T11:20:36+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>細分 ios 裝置</title>
+                <description>
+&lt;p&gt;剛剛&lt;a href=&quot;https://plus.google.com/u/0/+YoluaMesiade/posts&quot;&gt;小幽蘭&lt;/a&gt;問了我一個問題, 所以我順道也去查了一下, 要細分當前裝置到底是什麼的方法是, 首先&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;lt;sys/utsname.h&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然後只要&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;struct utsname systemInfo;
+uname(&amp;amp;systemInfo);
+NSLog(@&quot;%@&quot;, [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;就可以拿到該裝置的代碼, 代碼可以從&lt;a href=&quot;https://theiphonewiki.com/wiki/Models&quot;&gt;Models&lt;/a&gt;查詢.&lt;/p&gt;
+</description>
+                <link>http://username.github.io/objective-c/2014/12/03/1</link>
+                <guid>http://username.github.io/objective-c/2014/12/03/1</guid>
+                <pubDate>2014-12-03T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>beacon 小記</title>
