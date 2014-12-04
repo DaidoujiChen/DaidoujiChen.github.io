@@ -8,6 +8,7 @@ http://username.github.io/rss.xml
 http://username.github.io/sitemap.txt
 http://username.github.io/tags.html
 
+http://username.github.io/objective-c/2014/12/04/2
 http://username.github.io/objective-c/2014/12/04/1
 http://username.github.io/objective-c/2014/12/03/1
 http://username.github.io/objective-c/2014/11/28/2

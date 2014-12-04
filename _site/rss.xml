@@ -5,10 +5,28 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-12-04T22:39:58+08:00</lastBuildDate>
-        <pubDate>2014-12-04T22:39:58+08:00</pubDate>
+        <lastBuildDate>2014-12-04T23:34:33+08:00</lastBuildDate>
+        <pubDate>2014-12-04T23:34:33+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Dai-Hentai 近況</title>
+                <description>
+&lt;p&gt;最近公司有些東西比較急著寫, O3O, &lt;a href=&quot;https://github.com/DaidoujiChen/Dai-Hentai&quot;&gt;Dai-Hentai&lt;/a&gt; 這個可憐的孩子就被擱置了, 下午抽出了一點點時間, 把 &lt;code&gt;iPad&lt;/code&gt; 的版本的界面大致的勾勒了一下, 做一些簡單的測試, 用跟 &lt;code&gt;iPhone&lt;/code&gt; 版本相同的 code 好像沒有太大的問題, 不過我想這應該還需要一些些時間發酵看看才知道結果. &lt;/p&gt;
+
+&lt;p&gt;接下來要著手進行的應該是傳說中 &lt;a href=&quot;http://e-hentai.org/&quot;&gt;e-hentai&lt;/a&gt; 裏站 &lt;a href=&quot;http://exhentai.org/&quot;&gt;exhentai&lt;/a&gt; 的挑戰, o3o” 連用電腦的瀏覽器都還沒有順利地進去過, 感覺前途有點坎坷.&lt;/p&gt;
+
+&lt;p&gt;icon 跟進場圖的部分很開心的找到了強力的援軍幫助, 今天似乎有看到一點點雛形了, 還算不錯, O3O 但是要成形可能還要幾天, 未來再公佈詳細的內容囉, 非常的期待, &amp;gt;3&amp;lt;&lt;/p&gt;
+
+&lt;p&gt;最後, 這兩天我總覺得 google plus sdk 在這個專案裡面很雞肋礙眼…我有在考慮是不是要把他拔掉.&lt;/p&gt;
+
+&lt;p&gt;希望他一天天茁壯囉. O3O&lt;/p&gt;
+</description>
+                <link>http://username.github.io/objective-c/2014/12/04/2</link>
+                <guid>http://username.github.io/objective-c/2014/12/04/2</guid>
+                <pubDate>2014-12-04T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>細分 ios 裝置之其二</title>
