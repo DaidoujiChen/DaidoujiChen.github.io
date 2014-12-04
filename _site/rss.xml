@@ -5,10 +5,21 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-12-03T11:20:36+08:00</lastBuildDate>
-        <pubDate>2014-12-03T11:20:36+08:00</pubDate>
+        <lastBuildDate>2014-12-04T22:39:58+08:00</lastBuildDate>
+        <pubDate>2014-12-04T22:39:58+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>細分 ios 裝置之其二</title>
+                <description>
+&lt;p&gt;因為記憶中一直覺得有在 &lt;code&gt;github&lt;/code&gt; 上看過類似的專案, 但是一直想不起來,
+經過一天之後, 我找到這個專案了, 這個專案叫做 &lt;a href=&quot;https://github.com/sebyddd/SDiPhoneVersion&quot;&gt;SDiPhoneVersion&lt;/a&gt;, 未來有需要的話可以使用他.&lt;/p&gt;
+</description>
+                <link>http://username.github.io/objective-c/2014/12/04/1</link>
+                <guid>http://username.github.io/objective-c/2014/12/04/1</guid>
+                <pubDate>2014-12-04T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>細分 ios 裝置</title>

@@ -4,13 +4,24 @@
  <title>DaidoujiChen 記事本</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-12-03T11:20:36+08:00</updated>
+ <updated>2014-12-04T22:39:58+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>DaidoujiChen</name>
    <email>daidoujichen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>細分 ios 裝置之其二</title>
+   <link href="http://username.github.io/objective-c/2014/12/04/1"/>
+   <updated>2014-12-04T00:00:00+08:00</updated>
+   <id>http://username.github.io/objective-c/2014/12/04/1</id>
+   <content type="html">
+&lt;p&gt;因為記憶中一直覺得有在 &lt;code&gt;github&lt;/code&gt; 上看過類似的專案, 但是一直想不起來,
+經過一天之後, 我找到這個專案了, 這個專案叫做 &lt;a href=&quot;https://github.com/sebyddd/SDiPhoneVersion&quot;&gt;SDiPhoneVersion&lt;/a&gt;, 未來有需要的話可以使用他.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>細分 ios 裝置</title>
