@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        考古...O口O wow 裡面最早出現的副本 - 
+        被 Fork 的專案如果刪除或是從公開改為私有 - 
       
       DaidoujiChen 記事本
     </title>
@@ -132,7 +132,7 @@
           
 <div class="page-header">
   <h1>
-    考古...O口O wow 裡面最早出現的副本 
+    被 Fork 的專案如果刪除或是從公開改為私有 
     
   </h1>
 </div>
@@ -140,18 +140,38 @@
 <div class="row">
   <div class="span8">
     
-<p>今天在 g+ 上看到一個討論串, 勾起以前很多 wow 的回憶, 我本來以為副本的演進是熔火之心 -&gt; 祖爾 -&gt; 黑翼兄妹, 沒想到黑龍妹妹自最初就跟熔火之心一起登場的阿~ Q3Q</p>
+<p>今天突然有一個好奇的問題, 就是說如果有一個公開的 repository 被好多人 fork 了以後, 如果這個 repository 改成私有的, 或是被刪除了, 那其他 fork 的人會怎麼樣?</p>
 
-<p><img src="/images/200911161140185e7.jpg" alt="image" /></p>
+<p>答案應該是不會怎麼樣, O3O, 從 <a href="https://help.github.com/articles/what-happens-to-forks-when-a-repository-is-deleted-or-changes-visibility/">Github Help</a> 的這一篇裡面寫到</p>
+
+<pre><code>Deleting a public repository
+
+When you delete a public repository, one of the existing public forks is chosen to be the new parent repository. All other repositories are forked off of this new parent and subsequent pull requests go to this new parent.
+</code></pre>
+
+<p>以及</p>
+
+<pre><code>Changing a public repository to a private repository
+
+If a public repository is made private, its public forks are split off into a new network. As with deleting a public repository, one of the existing public forks is chosen to be the new parent repository and all other repositories are forked off of this new parent. Subsequent pull requests go to this new parent.
+
+In other words, a public repository's forks will remain public in their own separate repository network even after the parent repository is made private. This allows the fork owners to continue to work and collaborate without interruption. If public forks were not moved into a separate network in this way, the owners of those forks would need to get the appropriate access permissions to pull changes from and submit pull requests to the (now private) parent repository—even though they didn't need those permissions before.
+
+Deleting the private repository
+
+If a public repository is made private and then deleted, its public forks will continue to exist in a separate network.
+</code></pre>
+
+<p>不論哪一種情況, 主要 repository 消失的時候, 會從 forks 裡面找一個新的人重新當作新的主要 repository, 所以專案的延續將不會受到影響.</p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/objective-c/2014/12/04/2" title="Dai-Hentai 近況">&larr; Previous</a>
+        <a class="btn prev" href="/%E8%88%88%E8%B6%A3/2014/12/05/1" title="考古...O口O wow 裡面最早出現的副本">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/github/2014/12/09/1" title="被 Fork 的專案如果刪除或是從公開改為私有">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -181,13 +201,13 @@
   <div class="span4">
     <section>
       <h4>Published</h4>
-      <div class="date"><span>05 December 2014</span></div>
+      <div class="date"><span>09 December 2014</span></div>
     </section>
     
       <section>
         <h4>Category</h4>
         <span class="category">
-          興趣
+          Github
         </span>
       </section>
          
@@ -201,9 +221,7 @@
 
   
      
-    	<li><a href="/tags.html#興趣-ref">興趣 <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#wow-ref">wow <span>1</span></a></li>
+    	<li><a href="/tags.html#Github-ref">Github <span>1</span></a></li>
     
   
 
