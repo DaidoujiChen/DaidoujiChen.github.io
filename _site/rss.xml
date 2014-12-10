@@ -5,10 +5,22 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-12-09T09:53:06+08:00</lastBuildDate>
-        <pubDate>2014-12-09T09:53:06+08:00</pubDate>
+        <lastBuildDate>2014-12-10T17:42:37+08:00</lastBuildDate>
+        <pubDate>2014-12-10T17:42:37+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Dai-Hentai 近況之其二</title>
+                <description>
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/DaidoujiChen/DaidoujiChen.github.io/master/images/IMG_2347.PNG&quot; width=&quot;320&quot; height=&quot;568&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Dai-Hentai 有 icon 跟進場圖了, 很開心 g+ 上面有神觸願意幫助, 畫的很快很好又很漂亮~ O3O&lt;/p&gt;
+</description>
+                <link>http://username.github.io/objective-c/2014/12/10/1</link>
+                <guid>http://username.github.io/objective-c/2014/12/10/1</guid>
+                <pubDate>2014-12-10T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>被 Fork 的專案如果刪除或是從公開改為私有</title>
