@@ -5,10 +5,72 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2014-12-10T17:42:37+08:00</lastBuildDate>
-        <pubDate>2014-12-10T17:42:37+08:00</pubDate>
+        <lastBuildDate>2014-12-12T17:46:29+08:00</lastBuildDate>
+        <pubDate>2014-12-12T17:46:29+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>代碼覆蓋率</title>
+                <description>
+&lt;p&gt;代碼覆蓋率可以幫助你更有系統的去分析程式碼那邊是比較重要, 哪邊是可能根本沒有被 run 過的 code, 以數據的方式呈現出來, 進而達到改善代碼品質的目的, 下面基本是參考 &lt;a href=&quot;https://developer.apple.com/library/ios/qa/qa1514/_index.html&quot;&gt;Configuring Xcode for Code Coverage&lt;/a&gt; 去做, 中間會貫穿一些我的想法進去.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;步驟零&lt;/h2&gt;
+&lt;p&gt;先刪除掉 build 過的暫存檔案們,
+&lt;img src=&quot;/images/螢幕快照 2014-12-12 下午5.19.34.png&quot; alt=&quot;image&quot; /&gt;
+用 device 的話建議砍掉 app, 用 simulator 的話把他重置即可.&lt;/p&gt;
+
+&lt;h2 id=&quot;gcno&quot;&gt;步驟ㄧ (取得gcno檔案)&lt;/h2&gt;
+&lt;p&gt;在 &lt;code&gt;Build Settings&lt;/code&gt; 裡面找到下面幾個項目,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/螢幕快照 2014-12-12 下午5.09.20.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;搜尋 &lt;code&gt;Generate Debug Symbols&lt;/code&gt; 把 &lt;code&gt;Debug&lt;/code&gt; 的部分設 &lt;code&gt;YES&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;搜尋 &lt;code&gt;Generate Test Coverage Files&lt;/code&gt; 把 &lt;code&gt;Debug&lt;/code&gt; 的部分設 &lt;code&gt;YES&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;搜尋 &lt;code&gt;Instrument Program Flow&lt;/code&gt; 把 &lt;code&gt;Debug&lt;/code&gt; 的部分設 &lt;code&gt;YES&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;到這邊先 ok, 先把 app build 過一次試試, 如果成功的話, 會在暫存的資料夾下, 找到一個類似這樣的資料夾
+&lt;img src=&quot;/images/螢幕快照 2014-12-12 下午5.24.05.png&quot; alt=&quot;image&quot; /&gt;
+最後一個資料夾的名稱取決於你裝置的架構, 像這邊我用模擬器測, 所以是 &lt;code&gt;i386&lt;/code&gt;, 第一次這樣跑下來檔案應該不會很多,
+會缺少 &lt;code&gt;.gcda&lt;/code&gt; 這一類的檔案.&lt;/p&gt;
+
+&lt;h2 id=&quot;gcda&quot;&gt;步驟二 (取得gcda檔案)&lt;/h2&gt;
+&lt;p&gt;在 &lt;code&gt;Info.plist&lt;/code&gt; 多加一個 key 值叫做 &lt;code&gt;Application does not run in background&lt;/code&gt;, 並將他設為 &lt;code&gt;YES&lt;/code&gt;,
+&lt;img src=&quot;/images/螢幕快照 2014-12-12 下午5.34.06.png&quot; alt=&quot;image&quot; /&gt;
+然後到 &lt;code&gt;AppDelegate&lt;/code&gt; 上面的部分先添加上&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+extern void __gcov_flush();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然後, 在 &lt;code&gt;- (void)applicationDidEnterBackground:(UIApplication *)application&lt;/code&gt; 內做下面的行為&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- (void)applicationDidEnterBackground:(UIApplication *)application {
+	__gcov_flush();
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	setenv(&quot;GCOV_PREFIX&quot;, [documentsDirectory cStringUsingEncoding:NSUTF8StringEncoding], 1);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;到這邊就也算設置完成了.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;步驟三 (實測)&lt;/h2&gt;
+&lt;p&gt;儘量測試到你 app 的每一項功能, 當測完之後, 請一定要記得按 &lt;code&gt;Home&lt;/code&gt; 鍵之後再結束.&lt;/p&gt;
+
+&lt;p&gt;這個時候, 我們一開始看的那個 &lt;code&gt;i386&lt;/code&gt; 資料夾應該會多出一些東西, 我們需要一個工具來看他的結果 &lt;a href=&quot;https://code.google.com/p/coverstory/wiki/UsingCoverstory&quot;&gt;CoverStory&lt;/a&gt;, 分析出來的結果大概會像是這樣
+&lt;img src=&quot;/images/螢幕快照 2014-12-12 下午5.43.37.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;結論&lt;/h2&gt;
+&lt;p&gt;也不是太熟, 還要多玩幾次才會知道~ O3O&lt;/p&gt;
+
+</description>
+                <link>http://username.github.io/objective-c/2014/12/12/1</link>
+                <guid>http://username.github.io/objective-c/2014/12/12/1</guid>
+                <pubDate>2014-12-12T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Dai-Hentai 近況之其二</title>

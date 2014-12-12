@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        NSMutableArray 的 new 和 array - 
+        代碼覆蓋率 - 
       
       DaidoujiChen 記事本
     </title>
@@ -132,7 +132,7 @@
           
 <div class="page-header">
   <h1>
-    NSMutableArray 的 new 和 array 
+    代碼覆蓋率 
     
   </h1>
 </div>
@@ -140,30 +140,68 @@
 <div class="row">
   <div class="span8">
     
-<p><a href="http://stackoverflow.com/questions/21710301/initialization-of-an-nsmutablearray-with-array-or-alloc-init">stackoverflow link</a></p>
+<p>代碼覆蓋率可以幫助你更有系統的去分析程式碼那邊是比較重要, 哪邊是可能根本沒有被 run 過的 code, 以數據的方式呈現出來, 進而達到改善代碼品質的目的, 下面基本是參考 <a href="https://developer.apple.com/library/ios/qa/qa1514/_index.html">Configuring Xcode for Code Coverage</a> 去做, 中間會貫穿一些我的想法進去.</p>
 
-<p>雖然在 ARC 下, 寫</p>
+<h2 id="section">步驟零</h2>
+<p>先刪除掉 build 過的暫存檔案們,
+<img src="/images/螢幕快照 2014-12-12 下午5.19.34.png" alt="image" />
+用 device 的話建議砍掉 app, 用 simulator 的話把他重置即可.</p>
 
-<pre><code> [NSMutableArray new];
+<h2 id="gcno">步驟ㄧ (取得gcno檔案)</h2>
+<p>在 <code>Build Settings</code> 裡面找到下面幾個項目,</p>
+
+<p><img src="/images/螢幕快照 2014-12-12 下午5.09.20.png" alt="image" /></p>
+
+<ul>
+  <li>搜尋 <code>Generate Debug Symbols</code> 把 <code>Debug</code> 的部分設 <code>YES</code></li>
+  <li>搜尋 <code>Generate Test Coverage Files</code> 把 <code>Debug</code> 的部分設 <code>YES</code></li>
+  <li>搜尋 <code>Instrument Program Flow</code> 把 <code>Debug</code> 的部分設 <code>YES</code></li>
+</ul>
+
+<p>到這邊先 ok, 先把 app build 過一次試試, 如果成功的話, 會在暫存的資料夾下, 找到一個類似這樣的資料夾
+<img src="/images/螢幕快照 2014-12-12 下午5.24.05.png" alt="image" />
+最後一個資料夾的名稱取決於你裝置的架構, 像這邊我用模擬器測, 所以是 <code>i386</code>, 第一次這樣跑下來檔案應該不會很多,
+會缺少 <code>.gcda</code> 這一類的檔案.</p>
+
+<h2 id="gcda">步驟二 (取得gcda檔案)</h2>
+<p>在 <code>Info.plist</code> 多加一個 key 值叫做 <code>Application does not run in background</code>, 並將他設為 <code>YES</code>,
+<img src="/images/螢幕快照 2014-12-12 下午5.34.06.png" alt="image" />
+然後到 <code>AppDelegate</code> 上面的部分先添加上</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+extern void __gcov_flush();
 </code></pre>
 
-<p>和</p>
+<p>然後, 在 <code>- (void)applicationDidEnterBackground:(UIApplication *)application</code> 內做下面的行為</p>
 
-<pre><code> [NSMutableArray array];
+<pre><code>- (void)applicationDidEnterBackground:(UIApplication *)application {
+	__gcov_flush();
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	setenv("GCOV_PREFIX", [documentsDirectory cStringUsingEncoding:NSUTF8StringEncoding], 1);
+}
 </code></pre>
 
-<p>已經沒有差異了, 但是從 <code>MRC</code> 走過來的習慣, 始終有種寫 <code>new</code> 就要多寫 <code>release</code> 的錯覺…</p>
+<p>到這邊就也算設置完成了.</p>
 
-<p>因此都還是習慣寫 <code>array</code>.</p>
+<h2 id="section-1">步驟三 (實測)</h2>
+<p>儘量測試到你 app 的每一項功能, 當測完之後, 請一定要記得按 <code>Home</code> 鍵之後再結束.</p>
+
+<p>這個時候, 我們一開始看的那個 <code>i386</code> 資料夾應該會多出一些東西, 我們需要一個工具來看他的結果 <a href="https://code.google.com/p/coverstory/wiki/UsingCoverstory">CoverStory</a>, 分析出來的結果大概會像是這樣
+<img src="/images/螢幕快照 2014-12-12 下午5.43.37.png" alt="image" /></p>
+
+<h2 id="section-2">結論</h2>
+<p>也不是太熟, 還要多玩幾次才會知道~ O3O</p>
+
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/%E5%85%B6%E4%BB%96/2014/11/27/1" title="Hello World">&larr; Previous</a>
+        <a class="btn prev" href="/objective-c/2014/12/10/1" title="Dai-Hentai 近況之其二">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/%E8%88%88%E8%B6%A3/2014/11/27/3" title="陣營">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -193,7 +231,7 @@
   <div class="span4">
     <section>
       <h4>Published</h4>
-      <div class="date"><span>27 November 2014</span></div>
+      <div class="date"><span>12 December 2014</span></div>
     </section>
     
       <section>
@@ -212,8 +250,6 @@
 
 
   
-     
-    	<li><a href="/tags.html#NSMutableArray-ref">NSMutableArray <span>1</span></a></li>
      
     	<li><a href="/tags.html#Objective-C-ref">Objective-C <span>8</span></a></li>
     
