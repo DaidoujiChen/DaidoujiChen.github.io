@@ -4,13 +4,25 @@
  <title>DaidoujiChen 記事本</title>
  <link href="http://username.github.io/" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2014-12-12T17:46:29+08:00</updated>
+ <updated>2014-12-17T11:23:35+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>DaidoujiChen</name>
    <email>daidoujichen@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Dai-Hentai 近況之其三</title>
+   <link href="http://username.github.io/objective-c/2014/12/17/1"/>
+   <updated>2014-12-17T00:00:00+08:00</updated>
+   <id>http://username.github.io/objective-c/2014/12/17/1</id>
+   <content type="html">
+&lt;p&gt;今天又修了一些東西, O3O, 加上昨天加入了 &lt;code&gt;exHentai&lt;/code&gt; 的支援, app 緩緩的長大了, 不知道是因為 jb 或是大陸地區的關係, 好像有很多用戶沒有辦法順利的使用, 目前聽過的有兩種, 一個是 app 進去之後跳網路錯誤, 然後就一直是綠油油的一片, 另一個則是列表有出來, 但是點下去之後選擇 &lt;code&gt;下載&lt;/code&gt;, 或是 &lt;code&gt;直接看&lt;/code&gt; 都會直接 crash 掉, 沒有辦法複製這兩個問題, 所以一直解不掉, 覺得有點糟糕, o3o&lt;/p&gt;
+
+&lt;p&gt;先不論難不難做, 未來有幾個想加入的東西, 一個我想做背景下載, 不然每次下載 app 都要一直開著很煩, 第二個想要增進整個 UI 的質感, 目前看起來就還是覺得不夠好, 只是堪用而已, 有想到什麼就再慢慢補充囉.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>代碼覆蓋率</title>
