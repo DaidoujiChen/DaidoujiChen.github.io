@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        考古...O口O wow 裡面最早出現的副本 - 
+        ReactiveCocoa 小記 - 
       
       DaidoujiChen 記事本
     </title>
@@ -132,7 +132,7 @@
           
 <div class="page-header">
   <h1>
-    考古...O口O wow 裡面最早出現的副本 
+    ReactiveCocoa 小記 
     
   </h1>
 </div>
@@ -140,18 +140,30 @@
 <div class="row">
   <div class="span8">
     
-<p>今天在 g+ 上看到一個討論串, 勾起以前很多 wow 的回憶, 我本來以為副本的演進是熔火之心 -&gt; 祖爾 -&gt; 黑翼兄妹, 沒想到黑龍妹妹自最初就跟熔火之心一起登場的阿~ Q3Q</p>
+<p>今天遇到一個一直誤會的功能, <code>ReactiveCocoa</code> 在做 <code>NSNotificationCenter</code> 的時候, 只有</p>
 
-<p><img src="/images/200911161140185e7.jpg" alt="image" /></p>
+<pre><code> [[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"Daidouji" object:nil] subscribeNext:^(id x) {
+    NSLog(@"hello");
+}];
+</code></pre>
+
+<p>這個樣子是不完全的, 這會導致即使當前的目標釋放了, 這個 block 還是會持續地收到通知, 正確應該為</p>
+
+<pre><code> [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"Daidouji" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id x) {
+    NSLog(@"hello");
+}];
+</code></pre>
+
+<p>需要設定一個釋放的點給他, 才算是完整的寫完.</p>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/objective-c/2014/12/04/2" title="Dai-Hentai 近況">&larr; Previous</a>
+        <a class="btn prev" href="/objective-c/2014/12/17/1" title="Dai-Hentai 近況之其三">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/github/2014/12/09/1" title="被 Fork 的專案如果刪除或是從公開改為私有">Next &rarr;</a>
+        <a class="btn next disabled">Next &rarr;</a>
       
     </div>
     <hr>
@@ -181,13 +193,13 @@
   <div class="span4">
     <section>
       <h4>Published</h4>
-      <div class="date"><span>05 December 2014</span></div>
+      <div class="date"><span>09 February 2015</span></div>
     </section>
     
       <section>
         <h4>Category</h4>
         <span class="category">
-          興趣
+          Objective-C
         </span>
       </section>
          
@@ -201,9 +213,9 @@
 
   
      
-    	<li><a href="/tags.html#興趣-ref">興趣 <span>1</span></a></li>
+    	<li><a href="/tags.html#Objective-C-ref">Objective-C <span>10</span></a></li>
      
-    	<li><a href="/tags.html#wow-ref">wow <span>1</span></a></li>
+    	<li><a href="/tags.html#ReactiveCocoa-ref">ReactiveCocoa <span>1</span></a></li>
     
   
 
