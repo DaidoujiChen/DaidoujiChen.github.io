@@ -5,10 +5,27 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2015-02-11T23:40:24+08:00</lastBuildDate>
-        <pubDate>2015-02-11T23:40:24+08:00</pubDate>
+        <lastBuildDate>2015-02-25T10:40:27+08:00</lastBuildDate>
+        <pubDate>2015-02-25T10:40:27+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>關於 createFileAtPath 會回傳 NO 的原因</title>
+                <description>
+&lt;p&gt;最近在弄 AWS S3 的傳輸, 中間遇到一個 &lt;code&gt;NSFileManager&lt;/code&gt; 在 &lt;code&gt;createFileAtPath&lt;/code&gt; 會失敗的問題, 由於 &lt;code&gt;createFileAtPath:contents:attributes:&lt;/code&gt; 本身沒有提供打印錯誤的原因, 所以不知道問題出在哪邊, 最後在 http://stackoverflow.com/questions/1860070/more-detailed-error-from-createfileatpath 找到, 需要使用較底層的打印方法, 才可以知道真正的錯誤是什麼, 會像是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if (![[NSFileManager defaultManager] createFileAtPath:delegate.downloadingFileURL.path contents:nil attributes:nil]) {
+	NSLog(@&quot;Error was code: %d - message: %s&quot;, errno, strerror(errno));
+	AWSLogError(@&quot;Error: Can not create file with file path:%@&quot;,delegate.downloadingFileURL.path);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+                <link>http://username.github.io/objective-c/2015/02/25/1</link>
+                <guid>http://username.github.io/objective-c/2015/02/25/1</guid>
+                <pubDate>2015-02-25T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>依的RO回憶錄  第五章. [ 鐵匠˙普隆德拉 ]</title>
