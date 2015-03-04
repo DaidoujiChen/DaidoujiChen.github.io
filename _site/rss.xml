@@ -5,10 +5,50 @@
         <description>DaidoujiChen 記事本 - DaidoujiChen</description>
         <link>http://username.github.io</link>
         <link>http://username.github.io</link>
-        <lastBuildDate>2015-02-25T10:40:27+08:00</lastBuildDate>
-        <pubDate>2015-02-25T10:40:27+08:00</pubDate>
+        <lastBuildDate>2015-03-04T16:02:33+08:00</lastBuildDate>
+        <pubDate>2015-03-04T16:02:33+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>SourceTree 的 Rebase children 在有 / 字符的 branch 下運作不正常</title>
+                <description>
+&lt;p&gt;這個問題困擾我很久, 最後還只得用手打 &lt;code&gt;command&lt;/code&gt; 來解決, 這邊就用隨便一個專案當作範例, 把方法記錄下來,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s3-ap-northeast-1.amazonaws.com/daidoujiminecraft/Daidouji/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7+2015-03-04+%E4%B8%8B%E5%8D%883.29.20.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;首先, 我有一個叫做 &lt;code&gt;feature/rebase_example&lt;/code&gt; 的分支, 超前 &lt;code&gt;master&lt;/code&gt; 和 &lt;code&gt;develop&lt;/code&gt; 兩個 commit, 然後我現在要把他們合成一個, 先輸入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git rebase -i HEAD~2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中 &lt;code&gt;HEAD~2&lt;/code&gt; 表示超前兩個, 如果有更多的話, 就填更多, 接下來, 他會問你要怎麼合, 像是&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s3-ap-northeast-1.amazonaws.com/daidoujiminecraft/Daidouji/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7+2015-03-04+%E4%B8%8B%E5%8D%883.49.28.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;所以現在有 &lt;code&gt;commit aaa&lt;/code&gt; 和 &lt;code&gt;commit bbb&lt;/code&gt; 要加入這次的遊戲, 在下面有每個功能代表的意義, 所以我們把他改成&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s3-ap-northeast-1.amazonaws.com/daidoujiminecraft/Daidouji/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7+2015-03-04+%E4%B8%8B%E5%8D%883.51.15.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;表示原先的 &lt;code&gt;commit aaa&lt;/code&gt; 要改名字, &lt;code&gt;commit bbb&lt;/code&gt; 要合併, 然後儲存, 他會再跳出一個畫面像是下面這樣&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s3-ap-northeast-1.amazonaws.com/daidoujiminecraft/Daidouji/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7+2015-03-04+%E4%B8%8B%E5%8D%883.53.18.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;問你說要把原來的 &lt;code&gt;commit aaa&lt;/code&gt; 改成叫什麼勒, 這邊我幫他改叫做 &lt;code&gt;commit new aaa&lt;/code&gt;, 然後又儲存, 再把接下來的一個畫面改成&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s3-ap-northeast-1.amazonaws.com/daidoujiminecraft/Daidouji/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7+2015-03-04+%E4%B8%8B%E5%8D%883.56.52.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;之後儲存, 就會合併成想要的樣子了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://s3-ap-northeast-1.amazonaws.com/daidoujiminecraft/Daidouji/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7+2015-03-04+%E4%B8%8B%E5%8D%883.59.04.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可喜可賀, 可喜可賀.&lt;/p&gt;
+
+</description>
+                <link>http://username.github.io/git/2015/03/04/1</link>
+                <guid>http://username.github.io/git/2015/03/04/1</guid>
+                <pubDate>2015-03-04T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>關於 createFileAtPath 會回傳 NO 的原因</title>
